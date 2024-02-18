@@ -44,7 +44,7 @@ h6 {
   font-weight: 400;
   margin: 0 0 20px 0;
   padding: 0;
-  color: #0e1b4d;
+  color: #000000;
 }
 
 .main-page {
@@ -121,6 +121,7 @@ h6 {
   text-align: center;
   font-weight: 700;
   margin-bottom: 10px;
+  margin-top: 20px;
 }
 
 .section-header p {
@@ -654,12 +655,14 @@ h6 {
 # About Section
 --------------------------------------------------------------*/
 #about {
-  background: url("../img/about-bg.jpg");
+  background: url("../img/about-bg.jpeg");
   background-size: cover;
   overflow: hidden;
   position: relative;
   color: #fff;
   padding: 60px 0 40px 0;
+  width:100vw;
+  height:50vh;
 }
 
 @media (min-width: 1024px) {
@@ -670,7 +673,7 @@ h6 {
 
 #about:before {
   content: "";
-  background: rgba(13, 20, 41, 0.8);
+  background: rgba(0, 0, 0, 0.606);
   position: absolute;
   bottom: 0;
   top: 0;
