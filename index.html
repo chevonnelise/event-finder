@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>TheEvent Bootstrap Template - Index</title>
+  <title>Taylor Swift : The Eras Tour</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -19,6 +19,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
     rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
@@ -134,8 +137,21 @@
           <p>Event venue location info and gallery</p>
         </div>
 
-        <div id="map"></div>
-
+        <div id="map-container">
+          <button id="toggleSearchBtn">Search</button>
+          <div id="map"></div>
+          <div id="search-container">
+              <input type="text" id="searchTerms" class="form-control mb-3"/>
+              <button id="searchBtn" class="btn btn-primary">Search</button>
+              <div id="search-results">
+              </div>
+          </div>
+      </div>
+          <input type="text" id="searchTerms" class="form-control mb-3"/>
+          <button id="searchBtn" class="btn btn-primary">Search</button>
+          <div id="search-results">
+          </div>
+      </div>
         <div class="row g-0">
           
           <!-- <div class="col-lg-6 venue-map">
@@ -1150,6 +1166,12 @@
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
       class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Bootstrap CSS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+  <!-- Axios -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
   <!-- Leaflet -->
   <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
