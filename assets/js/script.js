@@ -1,9 +1,3 @@
-let singapore = [ 1.29,103.85]; // #1 Singapore latlng
-let map = L.map('map').setView(singapore, 13); // #2 Set the center point
-
-// setup the tile layers
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>' }).addTo(map);
-
-let singaporeMarker = L.marker([1.29, 103.85]);
-singaporeMarker.addTo(map);
-singaporeMarker.bindPopup("<p>Singapore</p>")
+document.addEventListener("DOMContentLoaded", function(){
+    const map = createMap('map', 1.3521, 103.8198);
+});
