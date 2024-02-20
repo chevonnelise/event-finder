@@ -947,6 +947,16 @@ h6 {
   padding:10px;
 }
 
+#map-container {
+  position: relative;
+}
+
+#search-container {
+  position: absolute;
+  top: 10px;
+  left: 50px;
+  z-index: 1000;
+}
 #venue .container-fluid {
   margin-bottom: 3px;
 }
