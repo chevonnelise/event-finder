@@ -956,6 +956,9 @@ h6 {
   top: 10px;
   left: 50px;
   z-index: 1000;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 10px;
+  padding: 10px;
 }
 #venue .container-fluid {
   margin-bottom: 3px;
