@@ -27,6 +27,11 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+   crossorigin=""/>
+
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 
@@ -99,26 +104,26 @@
 
   <main id="main">
 
-    <!-- ======= About Section ======= -->
-    <section id="about">
-      <div class="container position-relative" data-aos="fade-up">
-        <div class="row">
-          <div class="col-lg-6">
-            <h3>About The Event</h3>
-            <p>Joining in the Eras Tour?</p>
-          </div>
-          <div class="col-lg-3">
-            <h3>Where</h3>
-            <p>Downtown Conference Center, New York</p>
-          </div>
-          <div class="col-lg-3">
-            <h3>When</h3>
-            <p>Monday to Wednesday<br>10-12 December</p>
+      <!-- ======= About Section ======= -->
+      <section id="about">
+        <div class="container position-relative" data-aos="fade-up">
+          <div class="row">
+            <div class="col-lg-6">
+              <h3>About The Event</h3>
+              <p>Joining in the Eras Tour?</p>
+            </div>
+            <div class="col-lg-3">
+              <h3>Where</h3>
+              <p>Downtown Conference Center, New York</p>
+            </div>
+            <div class="col-lg-3">
+              <h3>When</h3>
+              <p>Monday to Wednesday<br>10-12 December</p>
+            </div>
           </div>
         </div>
-      </div>
-    </section><!-- End About Section -->
-
+      </section><!-- End About Section -->
+  
     <!-- ======= Venue Section ======= -->
     <section id="venue">
 
@@ -129,21 +134,20 @@
           <p>Event venue location info and gallery</p>
         </div>
 
+        <div id="map"></div>
+
         <div class="row g-0">
-          <div id="container"></div>
-          <div class="col-lg-6 venue-map">
+          
+          <!-- <div class="col-lg-6 venue-map">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621"
               frameborder="0" style="border:0" allowfullscreen></iframe>
-          </div>
+          </div> -->
 
-          <div class="col-lg-6 venue-info">
+          <div class="col venue-info">
             <div class="row justify-content-center">
               <div class="col-11 col-lg-8 position-relative">
                 <h3>Downtown Conference Center, New York</h3>
-                <p>Iste nobis eum sapiente sunt enim dolores labore accusantium autem. Cumque beatae ipsam. Est quae sit
-                  qui voluptatem corporis velit. Qui maxime accusamus possimus. Consequatur sequi et ea suscipit enim
-                  nesciunt quia velit.</p>
               </div>
             </div>
           </div>
@@ -649,15 +653,30 @@
 
     </section><!-- End Hotels Section -->
 
+  
     <!-- ======= Gallery Section ======= -->
-    <section id="gallery">
+    <!-- <section id="gallery">
 
-      <div class="container" data-aos="fade-up">
-        <div class="section-header">
-          <h2>Gallery</h2>
-          <p>Check our gallery from the recent events</p>
-        </div>
-      </div>
+      <div class="container" data-aos="fade-up"> -->
+        <section id="about">
+          <div class="container" data-aos="fade-up">
+            <div class="row">
+              <div class="col-lg-6">
+                <h3>About The Event</h3>
+                <p>Joining in the Eras Tour?</p>
+              </div>
+              <div class="col-lg-3">
+                <h3>Where</h3>
+                <p>Downtown Conference Center, New York</p>
+              </div>
+              <div class="col-lg-3">
+                <h3>When</h3>
+                <p>Monday to Wednesday<br>10-12 December</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      <!-- </div> -->
 
       <div class="gallery-slider swiper">
         <div class="swiper-wrapper align-items-center">
@@ -1132,6 +1151,11 @@
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
       class="bi bi-arrow-up-short"></i></a>
 
+  <!-- Leaflet -->
+  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+   integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+   crossorigin=""></script>
+
   <!-- Vendor JS Files -->
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -1141,8 +1165,8 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-  <script src="data.js"></script>
-  <script src="script.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/script.js"></script>
 
 </body>
 
