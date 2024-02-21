@@ -8,7 +8,7 @@ async function search(lat, lng, searchTerms) {
             limit: 50
         },
     headers: {
-            accept: "application/json", 
+        Accept: "application/json", 
         Authorization: 'fsq3wvnLGd2aP9AqDQAVE8JuRvhzlab05d3vi2sdPjueMNE='
         }
     })
