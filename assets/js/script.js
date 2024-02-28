@@ -3,10 +3,13 @@ document.addEventListener("DOMContentLoaded", async function () {
 
      // Make a GET request to fetch GeoJSON data
      const venueResponse = await axios.get("data/venue.geojson");
-     const venueLayer = L.layergroup();
+     const venueLayer = L.layerGroup();
      venueLayer.addTo(map);
-     for (let venue of venueResponse.data) {
-         L.marker(venue.coordinates).bindPopup(`<h5>${venue.features[0].properties.Stadium}</h5>`).addTo(venueLayer);
+
+     for (let venue of venueResponse.data.features) {
+        const coordinates = venue.geometry.coordinates.reverse(); // GeoJSON coordinates are [longitude, latitude]
+        const stadiumName = venue.properties.Stadium;
+        L.marker(coordinates).bindPopup(`<h5>${stadiumName}</h5>`).addTo(venueLayer);
      }
 
     document.querySelector("#searchBtn").addEventListener("click", async function () {
