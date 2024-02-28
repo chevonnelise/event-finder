@@ -14,6 +14,5 @@ function addMarkersToMap(searchResults, layer, map) {
 
     const searchResultOutput = document.querySelector("#search-results");
     searchResultOutput.innerHTML = "";
-
-
 }
+
