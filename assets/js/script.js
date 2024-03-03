@@ -103,9 +103,9 @@ document.addEventListener("DOMContentLoaded", async function () {
             marker.bindPopup(function () {
                 const divElement = document.createElement('div');
                 divElement.innerHTML = `
-                <h3>${location.name}</h3>
+                <h5>${location.name}</h5>
                 <img src="#"/>
-                <h4>${location.location.formatted_address}</h4>
+                <p>${location.location.formatted_address}</p>
             `;
             // <button class="btn btn-primary clickButton">Click</button> //
 
