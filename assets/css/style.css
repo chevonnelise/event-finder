@@ -1014,6 +1014,10 @@ h6 {
 
 }
 
+#searchBtn.btn.btn-dark {
+  background-color: #f42880;
+  border-color:  #f42880;
+}
 #search-results {
   max-height: 300px;
   overflow-y: scroll;

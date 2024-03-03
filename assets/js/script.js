@@ -106,9 +106,8 @@ document.addEventListener("DOMContentLoaded", async function () {
                 <h3>${location.name}</h3>
                 <img src="#"/>
                 <h4>${location.location.formatted_address}</h4>
-                // <button class="btn btn-primary clickButton">Click</button>
-
             `;
+            // <button class="btn btn-primary clickButton">Click</button> //
 
                 async function getPicture() {
                     const photos = await getPhotoFromFourSquare(location.fsq_id);
