@@ -7,4 +7,4 @@ License: https://bootstrapmade.com/license/
 
 Image credits:
 hero-image --> Photo by Vishnu R Nair: https://www.pexels.com/photo/people-at-concert-1105666/
-map-icon --> <a href="https://www.flaticon.com/free-icons/concert" title="concert icons">Concert icons created by Freepik - Flaticon</a>
+microphone.png (icon) --> <a href="https://www.flaticon.com/free-icons/microphone" title="microphone icons">Microphone icons created by Freepik - Flaticon</a>

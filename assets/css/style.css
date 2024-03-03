@@ -947,6 +947,29 @@ h6 {
   padding:10px;
 }
 
+/* Custom CSS for venue cluster icon */
+.venue-cluster-icon {
+  background-color: rgba(255, 255, 255, 0.609); /* Set background color to transparent */
+  color: #b7065b; /* Text color of the cluster icon */
+  border-radius: 50%; /* Border radius to make the icon circular */
+  font-family: cursive;
+  text-align: center; /* Center-align text */
+  font-size: 30px; /* Font size of the text */
+  line-height: 40px; /* Line height to vertically center the text */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+  display: flex; /* Use flexbox for centering */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+
+/* Style the image inside the cluster icon */
+.venue-cluster-icon img {
+  width: 40px; /* Set width of the image */
+  height: auto; /* Maintain aspect ratio */
+  margin-right: 5px; /* Add spacing between image and count */
+}
+
 #map-container {
   position: relative;
 }
