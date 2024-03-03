@@ -961,6 +961,7 @@ h6 {
   display: flex; /* Use flexbox for centering */
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
+  padding:5%;
 }
 
 /* Style the image inside the cluster icon */
