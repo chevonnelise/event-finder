@@ -1,41 +1,37 @@
 document.addEventListener("DOMContentLoaded", async function () {
-    const map = createMap('map', 1.3521, 103.8198);
+   
+    // setup the map
+    const map = L.map("map");
+    map.setView([1.3521, 103.8198], 13);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>' }).addTo(map);
 
-     // Make a GET request to fetch GeoJSON data
-     const venueResponse = await axios.get("data/venue.geojson");
-     const venueLayer = L.layerGroup();
-     venueLayer.addTo(map);
+    const hdbLayerPromise = createLayer("assets/data/hdb.json", map);
+    const mallLayerPromise =  createLayer("assets/data/mall.json", map);
+    const naturePromise =  createLayer("assets/data/nature.json", map);
 
-     for (let venue of venueResponse.data.features) {
-        const coordinates = venue.geometry.coordinates.reverse(); // GeoJSON coordinates are [longitude, latitude]
-        const stadiumName = venue.properties.Stadium;
-        L.marker(coordinates).bindPopup(`<h5>${stadiumName}</h5>`).addTo(venueLayer);
-     }
+    // when you await a promise, JavaScipt will pause
+    // at that line and return the value from the promise (function that takes a long time execute)
+    const hdbLayer = await hdbLayerPromise;
+    const mallLayer = await mallLayerPromise;
+    const natureLayer = await naturePromise;
 
-    document.querySelector("#searchBtn").addEventListener("click", async function () {
-        const searchTerms = document.querySelector("#searchTerms").value;
-        const data = await search(1.3521, 103.8198, searchTerms);
+    L.control.layers({
+        'HDB': hdbLayer,
+        'Malls': mallLayer,
+        "Nature": natureLayer
+    }, {}).addTo(map);
 
-
-        // edit marker icon
-        var customIcon = L.icon({
-            iconUrl: 'assets/img/concert_location.png',
-            iconSize: [70, 70],
-            iconAnchor: [20, 40], // Adjust based on your icon's size
-            popupAnchor: [0, -40] // Adjust to position popup relative to the icon
-        });
-
-        /*identify each location from data.results each search*/
-        for (let location of data.results) {
-            /*create marker for each location*/
-            const lat = location.geocodes.main.latitude;
-            const lng = location.geocodes.main.longitude;
-            const address = location.location.formatted_address;
-            const marker = L.marker([lat, lng], { icon: customIcon });
-            marker.bindPopup(`<h5>${address}</h5>`);
-
-            // add marker to the map
-            marker.addTo(map);
-        }
-    })
 });
+
+async function createLayer(jsonFileName, map) {
+    // the await pauses the function BUT only that function
+    const response = await axios.get(jsonFileName);
+    const layer = L.layerGroup();
+    layer.addTo(map);
+    for (let location of response.data) {
+        // this technique is known as function chaining
+        // this works because .bindPopup also returs the marker
+        L.marker(location.coordinates).bindPopup(`<h1>${location.name}</h1>`).addTo(layer);
+    }
+    return layer;
+}
