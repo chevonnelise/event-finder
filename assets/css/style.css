@@ -1002,6 +1002,7 @@ h6 {
 
 #search-container {
   position: absolute;
+  margin-top: 4%;
   top: 50px;
   left: 50px;
   z-index: 1000;
@@ -1009,7 +1010,6 @@ h6 {
   padding: 10px;
   min-width: 250px;
   max-width: 250px;
-  
   display:none;
 
 }
@@ -1025,6 +1025,16 @@ h6 {
   left: 50px;
   top: 10px;
   z-index: 1000;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+
+#searchIcon {
+  height: 20px;
+  weidth: 20px;
 }
 
 @media screen and (min-width: 767px ) {
@@ -1035,9 +1045,9 @@ h6 {
       top: 20px;
   }
 
-  #toggleSearchBtn {
+  /* #toggleSearchBtn {
       display: none;
-  }
+  } */
 }
 
 
