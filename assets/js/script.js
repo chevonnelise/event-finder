@@ -1,12 +1,16 @@
 document.addEventListener("DOMContentLoaded", async function () {
 
     // setup the map
-    const map = L.map('map').setView([45.9432, 24.9668], 1);
+    const map = L.map('map').setView([1.3521, 103.8198], 12);
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>' }).addTo(map);
+
+    // Define searchLayer as a layer group
+    const searchLayer = L.layerGroup();
+    searchLayer.addTo(map);
 
     // Create marker cluster group
     const venueClusterLayer = L.markerClusterGroup({
-        iconCreateFunction: function(cluster) {
+        iconCreateFunction: function (cluster) {
             const childCount = cluster.getChildCount();
 
             return L.divIcon({
@@ -34,7 +38,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         // Add marker to cluster layer
         venueClusterLayer.addLayer(venueMarker);
-        
+
 
         // Add mouseover event listener
         venueMarker.on('mouseover', function (event) {
@@ -47,9 +51,159 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     }
 
-    const baseLayer2 = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; OpenTopoMap contributors'
+    // // Event Brite API
+    // const API_KEY = 'SJCOUGP4LMDOBEPTVRMH'; 
+    // const BASE_API_URL = "https://www.eventbriteapi.com/v3/";
+
+    // Create marker cluster group for other venues
+    // const otherClusterLayer = L.markerClusterGroup({
+    //     iconCreateFunction: function(cluster) {
+    //         const childCount = cluster.getChildCount();
+    //         return L.divIcon({
+    //             html: `<div class="other-cluster-icon"><img src="assets/img/microphone_others.png">${childCount}</div>`,
+    //             className: 'event-cluster',
+    //             iconSize: L.point(40, 40)
+    //         });
+    //     }
+    // });
+    // otherClusterLayer.addTo(map);
+
+    // Foursquare API
+    const BASE_API_URL = "https://api.foursquare.com/v3";
+    const API_KEY = "fsq3wvnLGd2aP9AqDQAVE8JuRvhzlab05d3vi2sdPjueMNE="
+
+    /**
+ * Add markers to a map
+ * @param {Object} searchResults Array of objects from FourSquare
+ * @param {*} layer The Leaflet Layer to add to
+ */
+    async function addMarkersToMap(searchResults, layer, map) {
+        // Remove all existing markers from the provided layer
+        layer.clearLayers();
+
+        const searchResultOutput = document.querySelector("#search-results");
+        searchResultOutput.innerHTML = "";
+
+        const markerIcon = L.icon({
+            iconUrl: 'assets/img/microphone_others.png', // Path to your new marker icon image
+            iconSize: [40, 40], // Size of the icon
+            iconAnchor: [20, 40], // Point of the icon which will correspond to marker's location
+            popupAnchor: [0, -40] // Point from which the popup should open relative to the iconAnchor
+        });
+
+        // Loop through each location in the search results
+        for (let location of searchResults.results) {
+            // Create a marker for each location
+            const lat = location.geocodes.main.latitude;
+            const lng = location.geocodes.main.longitude;
+            const address = location.location.formatted_address;
+            const name = location.name;
+            const marker = L.marker([lat, lng],  { icon: markerIcon });
+
+            marker.bindPopup(function () {
+                const divElement = document.createElement('div');
+                divElement.innerHTML = `
+                <h3>${location.name}</h3>
+                <img src="#"/>
+                <h4>${location.location.formatted_address}</h4>
+                // <button class="btn btn-primary clickButton">Click</button>
+
+            `;
+
+                async function getPicture() {
+                    const photos = await getPhotoFromFourSquare(location.fsq_id);
+                    const firstPhoto = photos[0];
+                    const photoUrl = firstPhoto.prefix + '150x150' + firstPhoto.suffix;
+                    divElement.querySelector("img").src = photoUrl;
+                }
+
+                getPicture();
+
+                // divElement.querySelector(".clickButton").addEventListener("click", function () {
+        //             alert("Search stadium!");
+        // });
+
+                return divElement;
+            });
+
+            // Add the marker to the map
+            marker.addTo(layer);
+
+            // Create and display the search result
+            const divElement = document.createElement('div');
+            divElement.innerHTML = location.name;
+
+            // Event listener for clicking a search result
+            divElement.addEventListener("click", function () {
+                map.flyTo([lat, lng], 16); // Fly to the location
+                marker.openPopup(); // Open marker popup
+            });
+
+            searchResultOutput.appendChild(divElement);
+        }
+    }
+
+    // Function to search for locations using FourSquare API
+    async function search(lat, lng, searchTerms) {
+        try {
+            const response = await axios.get(`${BASE_API_URL}/places/search`, {
+                params: {
+                    query: encodeURI(searchTerms),
+                    ll: lat + "," + lng,
+                    sort: "DISTANCE",
+                    radius: 5000,
+                    limit: 50
+                },
+                headers: {
+                    Accept: "application/json",
+                    Authorization: API_KEY
+                }
+            });
+            return response.data;
+        } catch (error) {
+            console.error("Error searching for locations:", error);
+            return [];
+        }
+    }
+
+    // Function to fetch photos from FourSquare
+    async function getPhotoFromFourSquare(fsqId) {
+        try {
+            const response = await axios.get(`${BASE_API_URL}/places/${fsqId}/photos`, {
+                headers: {
+                    Accept: "application/json",
+                    Authorization: API_KEY
+                }
+            });
+            return response.data;
+        } catch (error) {
+            console.error("Error fetching photos:", error);
+            return [];
+        }
+    }
+    document.querySelector("#searchBtn").addEventListener("click", async function () {
+        const searchTerms = document.querySelector("#searchTerms").value;
+
+        // find the lat lng of the center of the map
+        const centerPoint = map.getBounds().getCenter();
+        const data = await search(centerPoint.lat, centerPoint.lng, searchTerms);
+
+        // adding markers to the map for the search results
+        addMarkersToMap(data, searchLayer, map);
+
     });
+
+    document.querySelector("#toggleSearchBtn").addEventListener("click", function () {
+        const searchContainer = document.querySelector("#search-container");
+        const style = window.getComputedStyle(searchContainer);
+        // if the search container is already visible, we'll hide it
+        if (style.display != "none") {
+            searchContainer.style.display = "none";
+        } else {
+            // otherwise, show it
+            searchContainer.style.display = 'block';
+        }
+    })
 
     const overlayLayer = L.tileLayer('https://example.com/{z}/{x}/{y}.png', {
         attribution: 'Your attribution here'
@@ -57,7 +211,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     const baseLayers = {
         "Venue": venueClusterLayer,
-        "Base Layer 2": baseLayer2
+        "View Search Only": searchLayer
     };
 
     const overlayLayers = {
