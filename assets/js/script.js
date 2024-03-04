@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         let reversedCoordinates = [venue.geometry.coordinates[1], venue.geometry.coordinates[0]]; // Reverse coordinates
 
         const venueIcon = L.icon({
-            iconUrl: 'assets/img/magnifying-glass.png', // Path to your custom marker image
+            iconUrl: 'assets/img/microphone-zoom.png', // Path to your custom marker image
             iconSize: [40, 40], // Size of the icon
             iconAnchor: [16, 32], // Point of the icon which will correspond to marker's location
             popupAnchor: [0, -32] // Point from which the popup should open relative to the iconAnchor
@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         searchResultOutput.innerHTML = "";
 
         const markerIcon = L.icon({
-            iconUrl: 'assets/img/microphone-others.png', // Path to your new marker icon image
+            iconUrl: 'assets/img/magnifying-glass.png', // Path to your new marker icon image
             iconSize: [40, 40], // Size of the icon
             iconAnchor: [20, 40], // Point of the icon which will correspond to marker's location
             popupAnchor: [0, -40] // Point from which the popup should open relative to the iconAnchor
@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             const lng = location.geocodes.main.longitude;
             const address = location.location.formatted_address;
             const name = location.name;
-            const marker = L.marker([lat, lng],  { icon: markerIcon });
+            const marker = L.marker([lat, lng], { icon: markerIcon });
 
             marker.bindPopup(function () {
                 const divElement = document.createElement('div');
@@ -107,7 +107,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 <img src="#"/>
                 <p>${location.location.formatted_address}</p>
             `;
-            // <button class="btn btn-primary clickButton">Click</button> //
+                // <button class="btn btn-primary clickButton">Click</button> //
 
                 async function getPicture() {
                     const photos = await getPhotoFromFourSquare(location.fsq_id);
@@ -119,8 +119,8 @@ document.addEventListener("DOMContentLoaded", async function () {
                 getPicture();
 
                 // divElement.querySelector(".clickButton").addEventListener("click", function () {
-        //             alert("Search stadium!");
-        // });
+                //             alert("Search stadium!");
+                // });
 
                 return divElement;
             });
@@ -139,6 +139,15 @@ document.addEventListener("DOMContentLoaded", async function () {
             });
 
             searchResultOutput.appendChild(divElement);
+
+            // Add mouseover event listener
+            marker.on('mouseover', function (event) {
+                marker.openPopup(); // Open popup on mouseover
+            });
+            // Add mouseout event listener
+            marker.on('mouseout', function (event) {
+                marker.closePopup(); // Close popup on mouseout
+            });
         }
     }
 
