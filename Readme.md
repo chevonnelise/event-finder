@@ -18,13 +18,14 @@ License: https://bootstrapmade.com/license/
 
 <u>Map Markers</u>
 
-- [Microphone] [microphone.png] (https://www.flaticon.com/free-icons/microphone) *Image Credit: [Freepik]*
+- [Microphone] [microphone.png](https://www.flaticon.com/free-icons/microphone) *Image Credit: [Freepik]*
 
-- [Microphone for venue cluster] [microphone.png] (https://www.flaticon.com/free-icons/microphone) *Image Credit: [Freepik]*
+- [Microphone for venue cluster] [microphone.png](https://www.flaticon.com/free-icons/microphone) *Image Credit: [Freepik]*
 
-- [Microphone for 1 venue] [microphone-zoom.png] (https://www.flaticon.com/free-icons/microphone) *Image Credit: [Freepik]*
+- [Microphone for 1 venue] [microphone-zoom.png](https://www.flaticon.com/free-icons/microphone) *Image Credit: [Freepik]*
 
 - [Magnifying Glass for searched locations] [magnifying-glass.png](https://www.flaticon.com/free-icons/magnifying-glass) *Image Credit: [Freepik]*
+
 
 **Background Images**
 
