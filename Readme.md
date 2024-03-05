@@ -10,9 +10,9 @@ License: https://bootstrapmade.com/license/
 **Icons**
 
 <u>Website icon</u>
-    - [#4 Red Album Cover] [4-red-cover.png](https://en.wikipedia.org/wiki/Red_(Taylor%27s_Version))
+- [#4 Red Album Cover] [4-red-cover.png](https://en.wikipedia.org/wiki/Red_(Taylor%27s_Version))
 
-    *Image Credit: [Republic]*
+*Image Credit: [Republic]*
 
 
 <u>Map Markers</u>
