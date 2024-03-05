@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             const childCount = cluster.getChildCount();
 
             return L.divIcon({
-                html: `<div class="venue-cluster-icon"><img src="assets/img/microphone.png">${childCount}</div>`,
+                html: `<div class="venue-cluster-icon"><img src="assets/img/map-markers/microphone.png">${childCount}</div>`,
                 className: 'venue-cluster',
                 
                 iconSize: L.point(100, 100)
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         let reversedCoordinates = [venue.geometry.coordinates[1], venue.geometry.coordinates[0]]; // Reverse coordinates
 
         const venueIcon = L.icon({
-            iconUrl: 'assets/img/microphone-zoom.png', // Path to your custom marker image
+            iconUrl: 'assets/img/map-markers/microphone-zoom.png', // Path to your custom marker image
             iconSize: [40, 40], // Size of the icon
             iconAnchor: [16, 32], // Point of the icon which will correspond to marker's location
             popupAnchor: [0, -32] // Point from which the popup should open relative to the iconAnchor
@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     //     iconCreateFunction: function(cluster) {
     //         const childCount = cluster.getChildCount();
     //         return L.divIcon({
-    //             html: `<div class="other-cluster-icon"><img src="assets/img/microphone_others.png">${childCount}</div>`,
+    //             html: `<div class="other-cluster-icon"><img src="assets/img/map-markers/microphone_others.png">${childCount}</div>`,
     //             className: 'event-cluster',
     //             iconSize: L.point(40, 40)
     //         });
@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         searchResultOutput.innerHTML = "";
 
         const markerIcon = L.icon({
-            iconUrl: 'assets/img/magnifying-glass.png', // Path to your new marker icon image
+            iconUrl: 'assets/img/map-markers/magnifying-glass.png', // Path to your new marker icon image
             iconSize: [30, 30], // Size of the icon
             iconAnchor: [20, 40], // Point of the icon which will correspond to marker's location
             popupAnchor: [0, -40] // Point from which the popup should open relative to the iconAnchor
