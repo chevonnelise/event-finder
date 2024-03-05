@@ -16,7 +16,7 @@ magnifying-glass.png (icon) --> <a href="https://www.flaticon.com/free-icons/mag
 ## Image Credits
 *Icons*
 <u>Website icon</u>
-- ![#4 Red](https://upload.wikimedia.org/wikipedia/en/4/47/Taylor_Swift_-_Red_%28Taylor%27s_Version%29.png)
+- ![#4 Red Album Cover] [4-red-cover.png](https://en.wikipedia.org/wiki/Red_(Taylor%27s_Version))
   *Image Credit: [Republic]*
 
 <u>Map Markers</u>
