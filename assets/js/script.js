@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             return L.divIcon({
                 html: `<div class="venue-cluster-icon"><img src="assets/img/microphone.png">${childCount}</div>`,
                 className: 'venue-cluster',
+                
                 iconSize: L.point(100, 100)
             });
         }
@@ -86,7 +87,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         const markerIcon = L.icon({
             iconUrl: 'assets/img/magnifying-glass.png', // Path to your new marker icon image
-            iconSize: [40, 40], // Size of the icon
+            iconSize: [30, 30], // Size of the icon
             iconAnchor: [20, 40], // Point of the icon which will correspond to marker's location
             popupAnchor: [0, -40] // Point from which the popup should open relative to the iconAnchor
         });
