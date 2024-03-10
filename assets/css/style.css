@@ -1041,6 +1041,38 @@ h6 {
   width: 20px;
 }
 
+
+
+/* Style for buttons
+.nav-button {
+  /* Add styles for buttons here */
+  /* background-color: #f42880;
+  color: white;
+  border: none;
+  padding: 5px;
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+} */ */
+
+#navContainer.container-fluid {
+  align-items: center;
+  padding:10px;
+}
+
+/* Style for startBtn */
+#startBtn {
+  background-color: #f42880;
+  margin-bottom: 5px;
+  width: 90%;
+}
+
+/* Style for destBtn */
+#destBtn {
+  background-color: #941c50;
+  width: 90%;
+}
+
 @media screen and (min-width: 767px ) {
   #search-container {
       display: block;

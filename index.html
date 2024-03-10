@@ -42,6 +42,11 @@
   <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.Default.css">
 
+  <!-- Leaflet Routing Machine CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
+
+  <!-- Leaflet Geocoder CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
@@ -156,25 +161,34 @@
               <div id="search-results">
               </div>
             </div>
+
+
+            <!-- Navigation container -->
+            <div id="navContainer">
+              <button id="startBtn" class="btn btn-dark">Start</button>
+              <button id="destBtn" class="btn btn-dark">End</button>
+            </div>
+
+            <!-- <input type="text" id="searchInput" placeholder="Enter search term">
+            <button id="searchButton" class="btn btn-light">Search</button> -->
           </div>
         </div>
-      </div>
-      <div class="row g-0">
+        <div class="row g-0">
 
-        <!-- <div class="col-lg-6 venue-map">
+          <!-- <div class="col-lg-6 venue-map">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621"
               frameborder="0" style="border:0" allowfullscreen></iframe>
           </div> -->
 
-        <div class="col venue-info">
-          <div class="row justify-content-center">
-            <div class="col-11 col-lg-8 position-relative">
-              <h3>Downtown Conference Center, New York</h3>
+          <div class="col venue-info">
+            <div class="row justify-content-center">
+              <div class="col-11 col-lg-8 position-relative">
+                <h3>Downtown Conference Center, New York</h3>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
       </div>
 
@@ -1187,9 +1201,15 @@
     integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
     crossorigin=""></script>
 
-  <!-- Include Leaflet MarkerClusterGroup JavaScript -->
+  <!-- Leaflet MarkerClusterGroup JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/leaflet.markercluster.js"></script>
+
+  <!-- Leaflet Routing Machine JS -->
+  <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
+
+  <!-- Leaflet Geocoder JS -->
+  <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/aos/aos.js"></script>

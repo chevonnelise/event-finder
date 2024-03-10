@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             return L.divIcon({
                 html: `<div class="venue-cluster-icon"><img src="assets/img/map-markers/microphone.png">${childCount}</div>`,
                 className: 'venue-cluster',
-                
+
                 iconSize: L.point(100, 100)
             });
         }
@@ -228,5 +228,51 @@ document.addEventListener("DOMContentLoaded", async function () {
     };
 
     L.control.layers(baseLayers, overlayLayers).addTo(map);
+
+   // Leaflet Routing Machine
+    // Define control variable for Leaflet Routing Machine
+    const control = L.Routing.control({
+        routeWhileDragging: true,
+        geocoder: L.Control.Geocoder.nominatim({
+            language: 'en' // Set language to English
+        })
+    }).addTo(map);
+
+    function createButton(label, navContainer) {
+        const btn = L.DomUtil.create('button', '', navContainer);
+        btn.setAttribute('type', 'button');
+        btn.innerHTML = label;
+        return btn;
+    }
+
+    // Get references to HTML elements
+    const navContainer = document.getElementById('navContainer');
+    const startBtn = document.getElementById('startBtn');
+    const destBtn = document.getElementById('destBtn');
+
+    map.on('click', function (e) {
+        // Clear existing contents of navContainer
+        navContainer.innerHTML = '';
+
+        // Append start and destination buttons to the navContainer
+        navContainer.appendChild(startBtn);
+        navContainer.appendChild(destBtn);
+
+        L.popup()
+            .setContent(navContainer)
+            .setLatLng(e.latlng)
+            .openOn(map);
+
+        L.DomEvent.on(startBtn, 'click', function () {
+            control.spliceWaypoints(0, 1, e.latlng);
+            map.closePopup();
+        });
+
+        L.DomEvent.on(destBtn, 'click', function () {
+            control.spliceWaypoints(control.getWaypoints().length - 1, 1, e.latlng);
+            map.closePopup();
+        });
+    });
+
 });
 
