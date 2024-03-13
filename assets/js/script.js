@@ -229,14 +229,35 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     L.control.layers(baseLayers, overlayLayers).addTo(map);
 
-   // Leaflet Routing Machine
+    // Leaflet Routing Machine
     // Define control variable for Leaflet Routing Machine
     const control = L.Routing.control({
         routeWhileDragging: true,
         geocoder: L.Control.Geocoder.nominatim({
             language: 'en' // Set language to English
-        })
+        }),
+        createMarker: function () {
+        // Define the coordinates for your marker
+        var markerPosition = new google.maps.LatLng(latitude, longitude); // Replace latitude and longitude with your marker's position
+
+        // Define the icon for the marker
+        var iconImage = {
+            url: 'assets/img/map-markers/user.png', // Replace 'path/to/your/icon.png' with the path to your icon image
+            scaledSize: new google.maps.Size(32, 32), // Set the size of the icon
+            // You can also adjust other properties like anchor, origin, etc. if needed
+        };
+
+        // Create the marker
+        var marker = new google.maps.Marker({
+            position: markerPosition,
+            map: yourMap, // Replace 'yourMap' with your map object
+            icon: iconImage // Set the icon for the marker
+        });
+
+        return marker;
+        },
     }).addTo(map);
+
 
     function createButton(label, navContainer) {
         const btn = L.DomUtil.create('button', '', navContainer);
