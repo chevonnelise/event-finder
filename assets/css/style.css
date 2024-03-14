@@ -15,6 +15,8 @@ body {
   font-family: "Montserrat", serif;
 }
 
+p {line-height:20px;}
+
 a {
   color: #f82249;
   text-decoration: none;
@@ -669,19 +671,20 @@ h6 {
   color: #fff;
   padding: 60px 0 40px 0;
   width:100vw;
-  height:50vh;
+  height:90vh;
   z-index: 10000;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   #about {
     background-attachment: fixed;
+    height:50vh;
   }
 }
 
 #about:before {
   content: "";
-  background: rgba(0, 0, 0, 0.606);
+  background: rgba(0, 0, 0, 0.75);
   position: absolute;
   bottom: 0;
   top: 0;
@@ -1351,7 +1354,7 @@ h6 {
 --------------------------------------------------------------*/
 #subscribe {
   padding: 60px;
-  background: url(../img/subscribe-bg.jpg) center center no-repeat;
+  background: url(../img/about-bg.jpeg) center center no-repeat;
   background-size: cover;
   overflow: hidden;
   position: relative;
