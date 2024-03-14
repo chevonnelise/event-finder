@@ -72,19 +72,33 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
     venueClusterLayer.addTo(map);
 
+
     // Leaflet Routing Machine
     // Define control variable for Leaflet Routing Machine
+    let userIcon = new L.Icon({
+        iconUrl: 'assets/img/user.png',
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+    });
+
     const control = L.Routing.control({
         routeWhileDragging: true,
         geocoder: L.Control.Geocoder.nominatim({
             language: 'en' // Set language to English
         }),
-        createMarker: function () {
-            return null; // Disable markers for waypoints
-        }
+        createMarker: function(i, wp, nWps) {
+            if (i === 0 || i === nWps - 1) {
+              return L.marker(wp.latLng, {
+                icon: userIcon
+              });
+            } else {
+              return L.marker(wp.latLng, {
+                icon: myViaIcon
+              });
+            }
+          }
     });
-
-    // Add routing control to map
     control.addTo(map);
 
     // navContainer - Get references to HTML elements 
@@ -117,8 +131,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         });
     });
 
-    // Add the routing control layer to the map
-    const routeLayer = control.getPlan().addTo(map);
 
     // Create base and overlay layers
     const baseLayers = {
@@ -126,11 +138,11 @@ document.addEventListener("DOMContentLoaded", async function () {
         "View Search Only": searchLayer
     };
 
-    const overlayLayers = {
-        "Route": routeLayer
-    };
+    // const overlayLayers = {
+    //     "Weather": weatherLayer
+    // };
 
     // Add control layers to the map
-    L.control.layers(baseLayers, overlayLayers).addTo(map);
-
+    // L.control.layers(baseLayers, overlayLayers).addTo(map);
+    L.control.layers(baseLayers).addTo(map);
 });
