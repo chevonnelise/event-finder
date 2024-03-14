@@ -187,9 +187,9 @@ h6 {
 }
 
 /*--------------------------------------------------------------
-# Buy Tickets
+# Subscribe
 --------------------------------------------------------------*/
-.buy-tickets {
+.subscribe {
   color: #fff;
   background: #f82249;
   padding: 7px 22px;
@@ -203,17 +203,17 @@ h6 {
   white-space: nowrap;
 }
 
-.buy-tickets:hover {
+.subscribe:hover {
   background: none;
   color: #fff;
 }
 
-.buy-tickets:focus {
+.subscribe:focus {
   color: #fff;
 }
 
 @media (max-width: 992px) {
-  .buy-tickets {
+  .subscribe {
     margin: 0 15px 0 0;
   }
 }
