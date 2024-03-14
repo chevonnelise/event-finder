@@ -1,27 +1,5 @@
 document.addEventListener("DOMContentLoaded", async function () {
-
-    // setup the map
-    const map = L.map('map').setView([1.3521, 103.8198], 12);
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>' }).addTo(map);
-
-    // Define searchLayer as a layer group
-    const searchLayer = L.layerGroup();
-    searchLayer.addTo(map);
-
-    // Create marker cluster group
-    const venueClusterLayer = L.markerClusterGroup({
-        iconCreateFunction: function (cluster) {
-            const childCount = cluster.getChildCount();
-
-            return L.divIcon({
-                html: `<div class="venue-cluster-icon"><img src="assets/img/map-markers/microphone.png">${childCount}</div>`,
-                className: 'venue-cluster',
-
-                iconSize: L.point(100, 100)
-            });
-        }
-    });
-    venueClusterLayer.addTo(map);
+    const { map, searchLayer, venueClusterLayer } = setupMap(); // Call the setupMap function
 
     const venueResponse = await axios.get('assets/data/venue.geojson');
     for (let venue of venueResponse.data.features) {
@@ -236,26 +214,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         geocoder: L.Control.Geocoder.nominatim({
             language: 'en' // Set language to English
         }),
-        createMarker: function () {
-        // Define the coordinates for your marker
-        var markerPosition = new google.maps.LatLng(latitude, longitude); // Replace latitude and longitude with your marker's position
-
-        // Define the icon for the marker
-        var iconImage = {
-            url: 'assets/img/map-markers/user.png', // Replace 'path/to/your/icon.png' with the path to your icon image
-            scaledSize: new google.maps.Size(32, 32), // Set the size of the icon
-            // You can also adjust other properties like anchor, origin, etc. if needed
-        };
-
-        // Create the marker
-        var marker = new google.maps.Marker({
-            position: markerPosition,
-            map: yourMap, // Replace 'yourMap' with your map object
-            icon: iconImage // Set the icon for the marker
-        });
-
-        return marker;
-        },
     }).addTo(map);
 
 
