@@ -193,11 +193,11 @@ h6 {
 --------------------------------------------------------------*/
 .subscribe {
   color: #fff;
-  background: #f82249;
+  background: rgb(82, 3, 3);
   padding: 7px 22px;
   margin: 0 0 0 15px;
   border-radius: 50px;
-  border: 2px solid #f82249;
+  border: 2px solid rgb(82, 3, 3);
   transition: all ease-in-out 0.3s;
   font-weight: 500;
   line-height: 1;
@@ -1402,7 +1402,7 @@ h6 {
   border: 0;
   padding: 9px 25px;
   cursor: pointer;
-  background: #f82249;
+  background: #761405;
   color: #fff;
   transition: all 0.3s ease;
   outline: none;
@@ -1411,7 +1411,7 @@ h6 {
 }
 
 #subscribe button:hover {
-  background: #e0072f;
+  background: #761405;
 }
 
 @media (max-width: 460px) {
