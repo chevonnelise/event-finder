@@ -716,6 +716,16 @@ h6 {
 /*--------------------------------------------------------------
 # Speakers Section
 --------------------------------------------------------------*/
+.modal-content {
+  margin-top: 25%;
+}
+
+.card {
+  padding: 5%;
+  border: 5%;
+  margin-bottom: 20px;
+}
+
 #speakers {
   padding: 60px 0 30px 0;
 }
@@ -1061,6 +1071,18 @@ h6 {
 #navContainer.container-fluid {
   align-items: center;
   padding:10px;
+}
+
+#weatherContainer{
+  width:20vh;
+}
+
+.leaflet-popup-tip {
+  background: rgba(0, 0, 0, 0) !important;
+  box-shadow: none !important;
+  /* transform: rotate(180deg) translateY(140px);
+  background: white;
+  z-index: 8000; */
 }
 
 /* Style for startBtn */
