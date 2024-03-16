@@ -1,4 +1,4 @@
-// 1. createMap function
+
 function createMap(mapContainerID, lat, lng) {
     const map = L.map(mapContainerID).setView([lat, lng], 12);
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>' }).addTo(map);
@@ -6,7 +6,7 @@ function createMap(mapContainerID, lat, lng) {
 }
    
 
-// 2. Add markers to searchLayer
+// 3d. Add markers to searchLayer
 function addMarkersToMap(searchResults, layer, map) {
     // Remove all existing markers from the provided layer
     layer.clearLayers();
@@ -70,14 +70,13 @@ function addMarkersToMap(searchResults, layer, map) {
 
         searchResultOutput.appendChild(divElement);
 
-        // Add click event listener
-        marker.on('click', function (event) {
-            marker.openPopup(); 
+        // Add mouseover event listener
+        marker.on('mouseover', function (event) {
+            marker.openPopup(); // Open popup on mouseover
         });
-        // Add click event listener
-        marker.on('click', function (event) {
-            marker.closePopup(); 
+        // Add mouseout event listener
+        marker.on('mouseout', function (event) {
+            marker.closePopup(); // Close popup on mouseout
         });
     }
 }
-
